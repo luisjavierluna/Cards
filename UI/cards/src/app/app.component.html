@@ -32,10 +32,10 @@
             </form>
         </div>
         <div class="cards-grid">
-            <div class="card-row">
-                <div class="card-row-datails">
-                    <span>Luis Luna</span>
-                    <span>9999888877776666</span>
+            <div class="card-row" *ngFor="let card of cards">
+                <div class="card-row-details" >
+                    <span>{{card.cardHolderName}}</span>
+                    <span>{{card.cardNumber}</span>
                 </div>
                 <div class="card-row-action">
                     <a><i class="fa-solid fa-trash-can"></i></a>
