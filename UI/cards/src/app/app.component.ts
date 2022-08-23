@@ -10,6 +10,14 @@ import { CardsService } from './services/cards.service';
 export class AppComponent implements OnInit {
   title = 'cards';
   cards: Card[] = [];
+  card: Card = {
+    id: '',
+    cardHolderName: '',
+    cardNumber: '',
+    expiryMonth: '',
+    expiryYear: '',
+    cvc: ''
+  }
 
   constructor(private cardsService: CardsService) { }
 
@@ -22,5 +30,9 @@ export class AppComponent implements OnInit {
     .subscribe(
       response => this.cards = response
     )
+  }
+
+  onSubmit(){
+    console.log(this.card);
   }
 }
