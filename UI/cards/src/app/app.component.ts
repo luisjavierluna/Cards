@@ -33,6 +33,19 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.card);
+    this.cardsService.addCard(this.card)
+    .subscribe(
+      response => {
+        this.getAllCards();
+        this.card = {
+          id: '',
+          cardHolderName: '',
+          cardNumber: '',
+          expiryMonth: '',
+          expiryYear: '',
+          cvc: ''
+        }
+      }
+    )
   }
 }

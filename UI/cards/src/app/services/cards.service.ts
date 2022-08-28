@@ -15,4 +15,9 @@ export class CardsService {
   getAllCards(): Observable<Card[]>{
     return this.http.get<Card[]>(this.baseUrl);
   }
+
+  addCard(card: Card): Observable<Card>{
+    card.id = '00000000-0000-0000-0000-000000000000';
+    return this.http.post<Card>(this.baseUrl, card);
+  }
 }
