@@ -33,7 +33,7 @@
         </div>
         <div class="cards-grid">
             <div class="card-row" *ngFor="let card of cards">
-                <div class="card-row-details" >
+                <div class="card-row-details" (click)="populateCard(card)">
                     <span>{{card.cardHolderName}}</span>
                     <span>{{card.cardNumber}}</span>
                 </div>

@@ -33,6 +33,14 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(){
+    if (this.card.id == '') {
+      this.addCard();
+    }else{
+      this.updateCard(this.card);
+    }
+  }
+
+  addCard(){
     this.cardsService.addCard(this.card)
     .subscribe(
       response => {
@@ -51,6 +59,19 @@ export class AppComponent implements OnInit {
 
   deleteCard(id: string){
     this.cardsService.deleteCard(id)
+    .subscribe(
+      response =>{
+        this.getAllCards();
+      }
+    )
+  }
+
+  populateCard(card: Card){
+    this.card = card;
+  }
+
+  updateCard(card: Card){
+    this.cardsService.updateCard(card)
     .subscribe(
       response =>{
         this.getAllCards();
