@@ -48,4 +48,13 @@ export class AppComponent implements OnInit {
       }
     )
   }
+
+  deleteCard(id: string){
+    this.cardsService.deleteCard(id)
+    .subscribe(
+      response =>{
+        this.getAllCards();
+      }
+    )
+  }
 }
