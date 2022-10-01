@@ -3,31 +3,33 @@
 
     <div class="cards-container">
         <div class="cards-form">
-            <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="">Card Name</label>
-                    <input type="text" name="cardName" [(ngModel)]="card.cardHolderName">
+                    <label for="">Card Holder Name</label>
+                    <input type="text" formControlName="cardHolderName" [(ngModel)]="card.cardHolderName">
                 </div>
                 <div class="form-group">
                     <label for="">Card Number</label>
-                    <input type="text" name="cardNumber" [(ngModel)]="card.cardNumber">
+                    <input type="text" formControlName="cardNumber" [(ngModel)]="card.cardNumber">
                 </div>
                 <div class="form-group form-group-inline">
                     <div>
                         <label for="">Expiry Month</label>
-                        <input type="text" name="expiryMonth" [(ngModel)]="card.expiryMonth">
+                        <input type="text" formControlName="expiryMonth" [(ngModel)]="card.expiryMonth">
                     </div>
                     <div>
                         <label for="">Expiry Year</label>
-                        <input type="text" name="expiryYear" [(ngModel)]="card.expiryYear">
+                        <input type="text" formControlName="expiryYear" [(ngModel)]="card.expiryYear">
                     </div>
                     <div>
                         <label for="">CVC</label>
-                        <input type="text" name="cvc" [(ngModel)]="card.cvc">
+                        <input type="text" formControlName="cvc" [(ngModel)]="card.cvc">
                     </div>
                 </div>
                 <div class="form-group">
-                    <button>Save</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+                        Save
+                    </button>
                   </div>
             </form>
         </div>

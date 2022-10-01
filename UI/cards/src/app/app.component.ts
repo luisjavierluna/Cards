@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Card } from './models/Card';
 import { CardsService } from './services/cards.service';
 
@@ -19,10 +20,20 @@ export class AppComponent implements OnInit {
     cvc: ''
   }
 
-  constructor(private cardsService: CardsService) { }
+  constructor(private cardsService: CardsService, private formBuilder: FormBuilder) { }
+
+  form: FormGroup = this.formBuilder.group({});
 
   ngOnInit(): void {
     this.getAllCards();
+    
+    this.form = this.formBuilder.group({
+      cardHolderName: ['', {validators: [Validators.required]}],
+      cardNumber: ['', {validators: [Validators.required]}],
+      expiryMonth: ['', {validators: [Validators.required]}],
+      expiryYear: ['', {validators: [Validators.required]}],
+      cvc: ['', {validators: [Validators.required]}],
+    })
   }
 
   getAllCards(){
@@ -41,6 +52,15 @@ export class AppComponent implements OnInit {
   }
 
   addCard(){
+    this.card = {
+      id: '',
+      cardHolderName: this.form.value.cardHolderName,
+      cardNumber: this.form.value.cardNumber,
+      expiryMonth: this.form.value.expiryMonth,
+      expiryYear: this.form.value.expiryYear,
+      cvc: this.form.value.cvc,
+    }
+    
     this.cardsService.addCard(this.card)
     .subscribe(
       response => {
@@ -75,6 +95,14 @@ export class AppComponent implements OnInit {
     .subscribe(
       response =>{
         this.getAllCards();
+        this.card = {
+          id: '',
+          cardHolderName: '',
+          cardNumber: '',
+          expiryMonth: '',
+          expiryYear: '',
+          cvc: ''
+        }
       }
     )
   }

@@ -42,7 +42,7 @@ namespace Cards.API.Controllers
 
         // Add Card
         [HttpPost]
-        public async Task<IActionResult> AllCard([FromBody] Card card)
+        public async Task<IActionResult> AddCard([FromBody] Card card)
         {
             card.Id = Guid.NewGuid();
             await cardsDbContext.Cards.AddAsync(card);
