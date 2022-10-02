@@ -7,23 +7,28 @@
                 <div class="form-group">
                     <label for="">Card Holder Name</label>
                     <input type="text" formControlName="cardHolderName" [(ngModel)]="card.cardHolderName">
+                    <span class="text-danger" *ngIf="form.invalid">{{getFieldNameError()}}</span>
                 </div>
                 <div class="form-group">
                     <label for="">Card Number</label>
                     <input type="text" formControlName="cardNumber" [(ngModel)]="card.cardNumber">
+                    <span class="text-danger" *ngIf="form.invalid">{{getFieldNumberError()}}</span>
                 </div>
                 <div class="form-group form-group-inline">
                     <div>
                         <label for="">Expiry Month</label>
                         <input type="text" formControlName="expiryMonth" [(ngModel)]="card.expiryMonth">
+                        <span class="text-danger" *ngIf="form.invalid">{{getFieldMonthError()}}</span>
                     </div>
                     <div>
                         <label for="">Expiry Year</label>
                         <input type="text" formControlName="expiryYear" [(ngModel)]="card.expiryYear">
+                        <span class="text-danger" *ngIf="form.invalid">{{getFieldYearError()}}</span>
                     </div>
                     <div>
                         <label for="">CVC</label>
                         <input type="text" formControlName="cvc" [(ngModel)]="card.cvc">
+                        <span class="text-danger" *ngIf="form.invalid">{{getFieldCVCError()}}</span>
                     </div>
                 </div>
                 <div class="form-group">
